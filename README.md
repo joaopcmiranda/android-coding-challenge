@@ -1,19 +1,11 @@
-# CodePath - Fragments Sample App
+# Android Coding Challenge
 
-Working sample code for simple app demonstrating fragments in Android. Key topics covered:
-
-* Static Fragment
-* Dynamic Fragment
-* Communicating with Fragments
-* Fragments in different Layout
+Working sample code for simple widget identification
 
 ## Attribution
 
-This code was created by [Shyam Rokde](https://github.com/mysgithub) in 2016 for use in CodePath sessions.
+This code was created by [João Miranda](https://github.com/joaopcmiranda) in 2019 based on the code from [Shyam Rokde](https://github.com/mysgithub) in 2016.
 
-## Video Walkthrough
 
-<img src='./pizza.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
