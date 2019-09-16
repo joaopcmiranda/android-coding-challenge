@@ -2,14 +2,6 @@ package com.codepath.mypizza.extensions
 
 import java.security.MessageDigest
 
-fun String.sha512(): String {
-    return this.hashWithAlgorithm("SHA-512")
-}
-
-fun String.sha256(): String {
-    return this.hashWithAlgorithm("SHA-256")
-}
-
 fun String.md5(): String {
     return this.hashWithAlgorithm("MD5")
 }

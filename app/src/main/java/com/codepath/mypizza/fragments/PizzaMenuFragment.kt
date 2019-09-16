@@ -10,13 +10,14 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import com.codepath.mypizza.R
 import com.codepath.mypizza.data.Pizza
+import com.codepath.mypizza.extensions.onLayoutChanged
+import com.codepath.mypizza.identifier.Identifier
 import kotlinx.android.synthetic.main.fragment_pizza_menu.*
 
 /**
  * Created by Shyam Rokde on 8/5/16.
  */
 class PizzaMenuFragment : Fragment() {
-
 
     private var itemsAdapter: ArrayAdapter<String>? = null
 
@@ -37,26 +38,26 @@ class PizzaMenuFragment : Fragment() {
 
         lvItems.adapter = itemsAdapter
 
-        lvItems.onItemClickListener = AdapterView.OnItemClickListener { parent, v, position, id ->
+        lvItems.onItemClickListener = AdapterView.OnItemClickListener { _, _, position, _ ->
             // go to activity to load pizza details fragment
             listener!!.onPizzaItemSelected(position) // (3) Communicate with Activity using Listener
         }
+
+        val id = Identifier()
+        lvItems.onLayoutChanged { v: View ->
+            id.attachView(v)
+        }
+
     }
 
-
-    //--OnItemSelectedListener listener;
-    // This event fires 1st, before creation of fragment or any views
-    // The onAttach method is called when the Fragment instance is associated with an Activity.
-    // This does not mean the Activity is fully initialized.
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnItemSelectedListener) {      // context instanceof YourActivity
             this.listener = context // = (YourActivity) context
         } else {
-            throw ClassCastException(context!!.toString() + " must implement PizzaMenuFragment.OnItemSelectedListener")
+            throw ClassCastException("$context must implement PizzaMenuFragment.OnItemSelectedListener")
         }
     }
-
 
     // Define the events that the fragment will use to communicate
     interface OnItemSelectedListener {
